@@ -1,0 +1,11 @@
+FROM node:16
+
+COPY --from=ob_build:latest /home/jest-example-app/build /home/build
+
+WORKDIR /home
+
+RUN npm install -g serve
+
+EXPOSE 3000
+
+CMD ["serve", "-s", "build"]

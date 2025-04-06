@@ -1,0 +1,25 @@
+# Blue deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-blue
+  labels:
+    app: web-app
+    env: blue
+spec:
+  replicas: 8
+  selector:
+    matchLabels:
+      app: web-app
+      env: blue
+  template:
+    metadata:
+      labels:
+        app: web-app
+        env: blue
+    spec:
+      containers:
+      - name: web-app
+        image: askull1/ob_deploy:20240422
+        ports:
+        - containerPort: 3000

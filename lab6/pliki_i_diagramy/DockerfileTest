@@ -1,0 +1,3 @@
+FROM ob_build:latest
+
+CMD ["yarn", "test"]

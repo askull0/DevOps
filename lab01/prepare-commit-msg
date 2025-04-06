@@ -1,0 +1,8 @@
+#!/bin/bash
+commit=`cat $1`
+echo "COMMIT-MESSAGE:"$commit
+if [[ ! "$commit" =~ ^PL412110* ]] 
+then
+    echo "Błąd: Wiadomość commitu musi zaczynać się od 'PL412110'"
+	exit 1
+fi

@@ -1,0 +1,3 @@
+FROM ob_react:latest
+
+CMD ["npm", "test"]

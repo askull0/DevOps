@@ -1,0 +1,25 @@
+# Green deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-green
+  labels:
+    app: web-app
+    env: green
+spec:
+  replicas: 8
+  selector:
+    matchLabels:
+      app: web-app
+      env: green
+  template:
+    metadata:
+      labels:
+        app: web-app
+        env: green
+    spec:
+      containers:
+      - name: web-app
+        image: askull1/ob_deploy:20240422
+        ports:
+        - containerPort: 3000

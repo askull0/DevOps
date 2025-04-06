@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ob_build:latest
+    ports:
+      - "3000"
+  test:
+    build:
+      context: .
+      dockerfile: DockerfileTest
+    image: ob_test:latest
+    depends_on:
+      - app

@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    triggers {
+        pollSCM('*/3 * * * *')
+    }
+
+    stages {
+        stage('Build & test') {
+            steps {
+                echo "Build and test change"
+                sh '''
+                cd ./pliki/dockery
+                docker compose up --exit-code-from test
+                '''
+            }
+        }
+        stage('logi') {
+            steps {
+                echo 'logi:'
+                sh '''
+                cd ./pliki/dockery
+                docker compose logs app > logi-build.txt
+                docker compose logs test > logi-test.txt
+                docker compose down
+                '''
+            }
+        }
+    }
+}

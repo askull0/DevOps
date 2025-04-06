@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  build:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ob_react
+    ports:
+      - "3000:3000"
+
+  test:
+    build:
+      context: .
+      dockerfile: DockerfileTest
+    image: ob_testy
+    depends_on:
+      - build
