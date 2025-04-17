@@ -1,0 +1,12 @@
+#!/bin/bash
+
+PATTERN="PL412110"
+
+commit_message=$(cat "$1")
+
+if [[ ! "$commit_message" =~ $PATTERN ]]; then
+  echo "Error: Commit message must start with your initials and index number: $PATTERN"
+  exit 1
+fi
+
+exit 0
